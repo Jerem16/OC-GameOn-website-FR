@@ -1,23 +1,29 @@
+const menuMobile = document.getElementById("mytopNav");
+
 function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
+    if (menuMobile.className === "topNav") {
+        menuMobile.className += " responsive";
+    } else {
+        menuMobile.className = "topNav";
+    }
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
+const modalBkg = document.querySelector(".bground");
+const openModalBtn = document.querySelectorAll(".modal-btn");
+const closeModalBtn = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
 
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
+openModalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+    modalBkg.style.display = "block";
 }
 
-
+// close modal event
+closeModalBtn.addEventListener("click", closeModal);
+// close modal event
+function closeModal() {
+    modalBkg.style.display = "none";
+}
