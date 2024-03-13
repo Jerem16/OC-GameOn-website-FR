@@ -68,7 +68,7 @@ function validateEmail(inputVerification, printError) {
 const birthDateInput = document.getElementById("birthDate");
 const birthDateError = document.querySelector(".birthDate[data-error-visible]");
 
-//* Function N°1
+//* Function P°1
 //? Calculates age based on birth date.
 /**
  * @param {Date} inputVerification - The birth date.
@@ -92,7 +92,7 @@ function calculateAge(inputVerification, currentDate) {
     return age;
 }
 
-//* Function N°1
+//* Function N°0
 //? Validates the birth date to ensure the user is at least 12 years old.
 /**
  * @param {Date} inputVerification - The birth date.
@@ -135,7 +135,7 @@ const tournamentsError = document.querySelector(
     ".tournaments[data-error-visible]"
 );
 
-//* Function N°1
+//* Function P°1
 //? Checks if the input value is defined, is a number, and is in the range [0, 99].
 /**
  * @param {number} inputVerification - The value to check.
@@ -155,7 +155,7 @@ function validateInput(inputVerification, printError) {
     }
 }
 
-//* Function N°1
+//* Function N°0
 //? Event listener to re-validate on every change
 /**
  * @param {string} inputVerification - The input element to verify.
@@ -200,22 +200,22 @@ const locationError = document.querySelector(
  * @param {HTMLElement} printError - Display: error message.
  */
 function validateCheckbox(inputVerification, printError) {
-    // TODO: Create array element's with Array.from(); the "some" method checks if any element in this array is true
+    // Create array element's with Array.from(); the "some" method checks if any element in this array is true
     let isChecked = Array.from(inputVerification).some(
         (input) => input.checked
     );
-    // TODO: If "input.checked"=> false, display error message
+    // If "input.checked"=> false, display error message
     printError.setAttribute("data-error-visible", isChecked ? "false" : "true");
 }
 //? For-off => querySelectorAll[Elements]
 for (const input of locationInputs) {
-    // TODO: Listen & Update the error based on the state of the radio button
+    // Listen & Update the error based on the state of the radio button
     input.addEventListener("change", () => {
-        // TODO: Deselect all radio buttons
+        // Deselect checked off all radio buttons
         for (const otherInput of locationInputs) {
             otherInput.removeAttribute("checked");
         }
-        // TODO: add checked to the current radio button
+        // Add checked to the current radio button
         addCheckedAttribute(input);
         validateCheckbox(locationInputs, locationError);
     });
@@ -237,12 +237,12 @@ const cguError = document.querySelector(".form-cgu[data-error-visible]");
  * @param {HTMLElement} printError - Display: error message.
  */
 function checked(inputVerification, printError) {
-    // TODO: Display an error message if the checkbox is not checked
+    // Display an error message if the checkbox is unchecked
     printError.setAttribute(
         "data-error-visible",
         inputVerification.checked ? "false" : "true"
     );
-    // TODO: Listen for changes to the checkbox state and update the error message accordingly
+    // Listen Event changes to checkbox state, Update error message.
     cguCheckbox.addEventListener("change", () => {
         checked(cguCheckbox, cguError);
         addCheckedAttribute(cguCheckbox);
