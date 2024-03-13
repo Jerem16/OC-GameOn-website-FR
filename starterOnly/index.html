@@ -4,11 +4,6 @@
         <meta charset="utf-8" />
         <title>Reservation</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="modal-1.css" />
-        <link rel="stylesheet" href="modal-800.css" />
-        <!-- <link rel="stylesheet" href="modal.css" /> -->
-        <!-- <link rel="stylesheet" href="style.css" /> -->
-        <!-- <link rel="stylesheet" href="style-form.css" /> -->
 
         <link
             rel="stylesheet"
@@ -18,12 +13,24 @@
             href="https://fonts.googleapis.com/css?family=DM+Sans&family=Roboto:wght@500&display=swap"
             rel="stylesheet"
         />
+        <link rel="stylesheet" href="./assets/css/01-normalize.css" />
+        <link rel="stylesheet" href="./assets/css/02-home.css" />
+        <link rel="stylesheet" href="./assets/css/03-modal_form.css" />
+        <link rel="stylesheet" href="./assets/css/04-home-800.css" />
+        <!-- <link rel="stylesheet" href="./assets/css/05-modal_form-800.css" /> -->
+
+        <!-- <link rel="stylesheet" href="./assets/css/99-calque_home.css" /> -->
+        <!-- <link rel="stylesheet" href="./assets/css/99-calque_form.css" /> -->
+        <script defer src="./assets/scripts/active-link.js"></script>
+        <script defer src="./assets/scripts/menu-mobile.js"></script>
+        <script defer src="./assets/scripts/modal.js"></script>
+        <script defer src="./assets/scripts/form-validation.js"></script>
     </head>
     <body>
         <!-- Header Start -->
-        <header class="topNav" id="mytopNav">
+        <header class="topNav" id="myTopNav">
             <div class="header-logo">
-                <img alt="logo" src="Logo.png" width="250" height="45" />
+                <img alt="logo" src="./img/Logo.png" width="250" height="45" />
             </div>
             <a href="javascript:void(0);" class="icon" onclick="editNav()">
                 <i class="fa fa-bars"></i>
@@ -40,7 +47,6 @@
         <!-- Header End -->
 
         <!-- Main Start -->
-
         <main>
             <div class="hero-section">
                 <div class="hero-content">
@@ -56,7 +62,7 @@
                 </div>
                 <div class="hero-img">
                     <img
-                        src="./bg_img.jpg"
+                        src="./img/bg_img.jpg"
                         alt="img"
                         width="353"
                         height="326"
@@ -66,86 +72,120 @@
             </div>
 
             <!-- Modal -->
-            <div class="bground">
+            <div class="modal-bg">
                 <div class="content">
                     <span class="close"></span>
                     <div class="modal-body">
+                        <!-- Formulaire de réservation tournoi GameOn  -->
                         <form
+                            id="reserveForm"
                             name="reserve"
                             action="index.html"
                             method="get"
                             onsubmit="return validate();"
                         >
-                            <div class="formData">
-                                <label for="first">Prénom</label><br />
+                            <!-- Section Prénom Type String-->
+                            <div
+                                class="formData firstName"
+                                data-error-visible=""
+                                data-error="Veuillez entrer votre prénom, minimum 2 caractères"
+                            >
+                                <label for="firstName">Prénom</label>
+                                <br />
                                 <input
                                     class="text-control"
                                     type="text"
-                                    id="first"
-                                    name="first"
+                                    id="firstName"
+                                    name="firstName"
+                                />
+                                <br />
+                            </div>
+
+                            <!-- Section Nom Type String-->
+                            <div
+                                class="formData lastName"
+                                data-error-visible=""
+                                data-error="Veuillez entrer votre nom, minimum 2 caractères"
+                            >
+                                <label for="lastName">Nom</label><br />
+                                <input
+                                    class="text-control"
+                                    type="text"
+                                    id="lastName"
+                                    name="lastName"
                                     minlength="2"
-                                    required
                                 /><br />
                             </div>
-                            <div class="formData">
-                                <label for="last">Nom</label><br />
-                                <input
-                                    class="text-control"
-                                    type="text"
-                                    id="last"
-                                    name="last"
-                                    required
-                                /><br />
-                            </div>
-                            <div class="formData">
+
+                            <!-- Section E-mail Type mail-->
+                            <div
+                                class="formData email"
+                                data-error-visible=""
+                                data-error="Veuillez entrer une adresse électronique valide"
+                            >
                                 <label for="email">E-mail</label><br />
                                 <input
                                     class="text-control"
-                                    type="email"
+                                    type="mail"
                                     id="email"
                                     name="email"
-                                    required
-                                /><br />
+                                />
+
+                                <br />
                             </div>
-                            <div class="formData">
-                                <label for="birthdate">Date de naissance</label
+
+                            <!-- Section Date de naissance Type Date-->
+                            <div
+                                class="formData birthDate"
+                                data-error-visible=""
+                                data-error="Vous devez avoir plus de 12 ans pour vous inscrire"
+                            >
+                                <label for="birthDate">Date de naissance</label
                                 ><br />
                                 <input
                                     class="text-control"
                                     type="date"
-                                    id="birthdate"
-                                    name="birthdate"
-                                    required
+                                    id="birthDate"
+                                    name="birthDate"
                                 /><br />
                             </div>
-                            <div class="formData">
-                                <label for="quantity"
-                                    >À combien de tournois GameOn avez-vous déjà
+
+                            <!-- Section Nombre de concours Type Number-->
+                            <div
+                                class="formData tournaments"
+                                data-error-visible=""
+                                data-error="Entrer une valeur numérique, entre 1 et 99"
+                            >
+                                <label for="tournaments"
+                                    >À combien de concours GameOn avez-vous déjà
                                     participé ?</label
                                 ><br />
                                 <input
-                                    type="number"
                                     class="text-control"
-                                    id="quantity"
-                                    name="quantity"
+                                    id="tournaments"
+                                    name="tournaments"
                                     min="0"
                                     max="99"
-                                    required
                                 />
                             </div>
+
+                            <!-- Section Choix de la ville du tournoi Type Radio-->
                             <p class="text-label">
                                 A quel tournoi souhaitez-vous participer cette
                                 année ?
                             </p>
-                            <div class="formData">
+                            <div
+                                class="formData formData_location location"
+                                id="location"
+                                data-error-visible=""
+                                data-error="Veuillez sélectionner un tournoi"
+                            >
                                 <input
                                     class="checkbox-input"
                                     type="radio"
                                     id="location1"
                                     name="location"
                                     value="New York"
-                                    required
-                                    checked
                                 />
                                 <label class="checkbox-label" for="location1">
                                     <span class="checkbox-icon"></span>
@@ -158,7 +198,6 @@
                                     id="location2"
                                     name="location"
                                     value="San Francisco"
-                                    required
                                 />
                                 <label class="checkbox-label" for="location2">
                                     <span class="checkbox-icon"></span>
@@ -171,7 +210,6 @@
                                     id="location3"
                                     name="location"
                                     value="Seattle"
-                                    required
                                 />
                                 <label class="checkbox-label" for="location3">
                                     <span class="checkbox-icon"></span>
@@ -184,7 +222,6 @@
                                     id="location4"
                                     name="location"
                                     value="Chicago"
-                                    required
                                 />
                                 <label class="checkbox-label" for="location4">
                                     <span class="checkbox-icon"></span>
@@ -197,7 +234,6 @@
                                     id="location5"
                                     name="location"
                                     value="Boston"
-                                    required
                                 />
                                 <label class="checkbox-label" for="location5">
                                     <span class="checkbox-icon"></span>
@@ -210,7 +246,6 @@
                                     id="location6"
                                     name="location"
                                     value="Portland"
-                                    required
                                 />
                                 <label class="checkbox-label" for="location6">
                                     <span class="checkbox-icon"></span>
@@ -218,27 +253,51 @@
                                 </label>
                             </div>
 
-                            <div class="formData">
-                                <input
-                                    type="checkbox"
-                                    id="checkbox1"
-                                    checked
-                                    required
-                                />
-                                <label class="checkbox2-label" for="checkbox1">
-                                    <span class="checkbox-icon"></span>
-                                    J'ai lu et accepté les conditions
-                                    d'utilisation.
-                                </label>
+                            <!-- Section CGU -->
+                            <div class="formData_cgu">
+                                <div
+                                    class="form-cgu"
+                                    data-error-visible=""
+                                    data-error="Veuillez accepter les Conditions Générales d'Utilisation"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        id="checkbox-cgu"
+                                        class="checkbox-cgu"
+                                    />
+                                    <label
+                                        class="checkbox-cgu_label"
+                                        for="checkbox-cgu"
+                                    >
+                                        <span
+                                            class="checkbox-icon checked"
+                                            data-error-visible="true"
+                                        ></span>
+                                        J'ai lu et accepté les conditions
+                                        d'utilisation.
+                                    </label>
+                                </div>
                                 <br />
-                                <input type="checkbox" id="checkbox2" />
-                                <label class="checkbox2-label" for="checkbox2">
-                                    <span class="checkbox-icon"></span>
-                                    Je souhaite être prévenu des prochains
-                                    évènements.
-                                </label>
+
+                                <!-- Section News-Letter -->
+                                <div class="form-newsletter">
+                                    <input
+                                        type="checkbox"
+                                        id="checkbox-newsletter"
+                                        class="checkbox-newsletter"
+                                    />
+                                    <label
+                                        class="checkbox-cgu_label"
+                                        for="checkbox-newsletter"
+                                        ><span class="checkbox-icon"></span>
+                                        Je souhaite être prévenu des prochains
+                                        évènements.
+                                    </label>
+                                </div>
                                 <br />
                             </div>
+
+                            <!-- Bouton de soumission -->
                             <input
                                 class="btn-submit button"
                                 type="submit"
@@ -258,6 +317,5 @@
         <!-- Footer End-->
 
         <!-- Script -->
-        <script src="modal.js"></script>
     </body>
 </html>

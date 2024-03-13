@@ -1,6 +1,6 @@
 @media screen and (max-width: 1440px) {
     body {
-        background-image: url(./img/Desktop-H.png);
+        background-image: url(../img/Desktop-H.png);
         background-size: 1440px 1024px;
         background-position: top center;
         background-repeat: no-repeat;
@@ -25,7 +25,7 @@
 }
 @media screen and (max-width: 414px) {
     body {
-        background-image: url(./img/Mobile-H.png);
+        background-image: url(../img/Mobile-H.png);
         background-size: 414px 736px;
         background-position: top center;
         background-repeat: no-repeat;

@@ -1,0 +1,254 @@
+/*!! Global */
+
+/* Configuration Variables */
+:root {
+    --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+    --font-slab: var(--font-default);
+    --modal-duration: 0.8s;
+}
+
+/* Reset Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Global Styles for Landing Page */
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-default);
+    font-size: 18px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+p {
+    margin-bottom: 0;
+    padding: 0.5vw;
+}
+
+/*!! Header */
+
+.topNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    margin: 53px 42px 77px 100px;
+}
+
+.header-logo {
+    float: left;
+    /* width: 277px; */
+}
+.header-logo img {
+    width: 277px;
+    height: 50px;
+}
+.main-navbar {
+    float: right;
+}
+
+.topNav a {
+    float: left;
+    display: block;
+    color: #232323;
+    text-align: center;
+    padding: 10px 13px;
+    margin: 7px 0;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: sans-serif;
+    line-height: 23.44px;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+    border-radius: 8px;
+}
+
+.topNav a.active,
+.topNav a:hover,
+.topNav a:focus {
+    background-color: #232323;
+    color: #ffffff;
+    padding: 10px 13px 7px 13px;
+    margin: 7px 12.5px 0 0;
+}
+.topNav a.active {
+    background-color: #ff0000;
+}
+.topNav a span {
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+}
+
+.topNav a:hover span,
+.topNav a:focus span,
+.topNav a.active span {
+    border-bottom: 1px solid #fff;
+}
+
+/* Icon for Mobile Navigation (hidden in desktop mode) */
+.topNav .icon {
+    display: none;
+}
+
+/*!! Main */
+
+main {
+    font-size: 130%;
+    font-weight: bolder;
+    color: black;
+    /* padding-top: 0.5vw; */
+    padding-left: 100px;
+    padding-right: 100px;
+    /* margin: 1px 20px 15px; */
+    border-radius: 8px;
+    text-align: justify;
+}
+.hero-section {
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    overflow: hidden;
+    box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    width: 100%;
+    max-height: 657px;
+}
+.hero-content {
+    padding: 51px 55px;
+    grid-column: span 4;
+    background: #232323;
+    color: #fff;
+    position: relative;
+    text-align: left;
+    min-width: 424px;
+}
+.hero-content::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #232323;
+    position: absolute;
+    right: -85px;
+    top: 0;
+}
+.hero-content > * {
+    position: relative;
+    z-index: 1;
+}
+.hero-headline {
+    font-size: 6rem;
+    font-weight: normal;
+    white-space: nowrap;
+    letter-spacing: 1.2px;
+    line-height: normal;
+    margin: 0;
+}
+.hero-text {
+    width: 146%;
+    font-weight: normal;
+    margin-top: 67px;
+    letter-spacing: 0.25px;
+    padding: 0;
+    line-height: normal;
+}
+
+.hero-img {
+    grid-column: span 8;
+}
+.hero-img img {
+    float: right;
+    width: calc(100% - 85px);
+    object-position: 0 -10px;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    padding: 0;
+}
+
+.hero-section > .btn-signup {
+    display: none;
+}
+
+.hero-section .modal-btn {
+    font-size: 25px;
+    letter-spacing: 0.5px;
+    padding: 0.75rem 2rem;
+    margin-top: 75px;
+}
+
+/*!! Button */
+
+.modal-btn {
+    /* padding: 2em; */
+    /* padding: 0.75rem 2.5rem; */
+    font-size: 145%;
+    /* background: #fe142f; */
+    display: flex;
+    margin: auto;
+    /* color: #fff; */
+    /* border-radius: 1rem; */
+    /* cursor: pointer; */
+}
+.btn-submit,
+.btn-signup {
+    /* padding: 12px 82px; */
+    background: #fe142f;
+    display: block;
+    margin: 0 auto;
+    border-radius: 7px;
+    /* font-size: 1rem; */
+
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+}
+.btn-signup {
+    outline: none;
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    padding: 15px 23px;
+    margin: 0;
+    margin-top: 59px;
+}
+.modal-btn:hover {
+    background: #3876ac;
+}
+.button {
+    /* background: #fe142f; */
+    margin-top: 0.5em;
+    padding: 1em;
+    /* color: #fff; */
+    border-radius: 15px;
+    /* cursor: pointer; */
+    font-size: 16px;
+}
+
+.button:hover {
+    background: #3876ac;
+}
+
+/* Styles du pied de page */
+footer {
+    padding: 0 40px;
+    /* margin: 0 20px; */
+}
+.footer {
+    margin: 20px;
+    padding: 10px;
+    font-family: var(--font-slab);
+}
+.copyrights {
+    color: #fe142f;
+    letter-spacing: -0.35px;
+    padding: 0;
+    font-size: 15px;
+    margin: 87px 0 0 0px;
+    font-weight: bolder;
+    line-height: normal;
+}
