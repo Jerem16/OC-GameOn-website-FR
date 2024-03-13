@@ -87,7 +87,7 @@
                             <!-- Section Prénom Type String-->
                             <div
                                 class="formData firstName"
-                                data-error-visible=""
+                                data-error-visible="false"
                                 data-error="Veuillez entrer votre prénom, minimum 2 caractères"
                             >
                                 <label for="firstName">Prénom</label>
@@ -104,7 +104,7 @@
                             <!-- Section Nom Type String-->
                             <div
                                 class="formData lastName"
-                                data-error-visible=""
+                                data-error-visible="false"
                                 data-error="Veuillez entrer votre nom, minimum 2 caractères"
                             >
                                 <label for="lastName">Nom</label><br />
@@ -120,7 +120,7 @@
                             <!-- Section E-mail Type mail-->
                             <div
                                 class="formData email"
-                                data-error-visible=""
+                                data-error-visible="false"
                                 data-error="Veuillez entrer une adresse électronique valide"
                             >
                                 <label for="email">E-mail</label><br />
@@ -137,7 +137,7 @@
                             <!-- Section Date de naissance Type Date-->
                             <div
                                 class="formData birthDate"
-                                data-error-visible=""
+                                data-error-visible="false"
                                 data-error="Vous devez avoir plus de 12 ans pour vous inscrire"
                             >
                                 <label for="birthDate">Date de naissance</label
@@ -153,7 +153,7 @@
                             <!-- Section Nombre de concours Type Number-->
                             <div
                                 class="formData tournaments"
-                                data-error-visible=""
+                                data-error-visible="false"
                                 data-error="Entrer une valeur numérique, entre 1 et 99"
                             >
                                 <label for="tournaments"
@@ -177,7 +177,7 @@
                             <div
                                 class="formData formData_location location"
                                 id="location"
-                                data-error-visible=""
+                                data-error-visible="false"
                                 data-error="Veuillez sélectionner un tournoi"
                             >
                                 <input
@@ -257,11 +257,12 @@
                             <div class="formData_cgu">
                                 <div
                                     class="form-cgu"
-                                    data-error-visible=""
+                                    data-error-visible="false"
                                     data-error="Veuillez accepter les Conditions Générales d'Utilisation"
                                 >
                                     <input
                                         type="checkbox"
+                                        name="checkbox-cgu"
                                         id="checkbox-cgu"
                                         class="checkbox-cgu"
                                     />
@@ -271,7 +272,7 @@
                                     >
                                         <span
                                             class="checkbox-icon checked"
-                                            data-error-visible="true"
+                                            data-error-visible=""
                                         ></span>
                                         J'ai lu et accepté les conditions
                                         d'utilisation.
@@ -283,6 +284,7 @@
                                 <div class="form-newsletter">
                                     <input
                                         type="checkbox"
+                                        name="checkbox-newsletter"
                                         id="checkbox-newsletter"
                                         class="checkbox-newsletter"
                                     />

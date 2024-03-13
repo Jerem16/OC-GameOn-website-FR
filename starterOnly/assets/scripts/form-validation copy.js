@@ -27,11 +27,9 @@ function validateName(inputVerification, printError) {
     });
 }
 
-
-
 //! FormData Email Section  ------------------------------------------------------//
-//* DOM Selector Elements
 /**
+ * * DOM Selector Elements
  * @param {HTMLInputElement} emailInput - The input element for the email.
  * @param {HTMLElement} emailError - The element to display error message for the email.
  */
@@ -57,21 +55,25 @@ function validateEmail(inputVerification, printError) {
     });
 }
 
-
-
 //! FormData Birth Day Section  ------------------------------------------------------//
-//* DOM Selector Elements
 /**
- * @param {HTMLInputElement} birthDateInput - The input element for the birthDate.
- * @param {HTMLElement} birthDateError - The element to display error message for the birthDate.
+ * * DOM Selector Elements
+ * @param {HTMLInputElement} birthDateInput - The input element for the email.
+ * @param {HTMLElement} birthDateError - The element to display error message for the email.
  */
 const birthDateInput = document.getElementById("birthDate");
 const birthDateError = document.querySelector(".birthDate[data-error-visible]");
 
-//* Function N°1
-//? Calculates age based on birth date.
+function validateInput(inputVerification, printError) {
+    if (!inputVerification.value || isNaN(inputVerification.value)) {
+        printError.setAttribute("data-error-visible", "true");
+    } else {
+        printError.setAttribute("data-error-visible", "false");
+    }
+}
 /**
- * @param {Date} inputVerification - The birth date.
+ * ? Calculates age based on birth date .
+ * @param {Date} birthDate - The birth date.
  * @param {Date} currentDate - The current date.
  * @returns {number}- Return age calculated based on the birth date.
  */
@@ -92,13 +94,12 @@ function calculateAge(inputVerification, currentDate) {
     return age;
 }
 
-//* Function N°1
-//? Validates the birth date to ensure the user is at least 12 years old.
 /**
- * @param {Date} inputVerification - The birth date.
+ * ? Validates the birth date to ensure the user is at least 12 years old.
+ * @param {Date} birthDate - The birth date.
  * @param {Date} currentDate - The current date.
  * @param {function} calculateAge - The function to calculate the age based on the birth date and current date.
- * @param {string} printError - The element to display error message for the birth date.
+ * @param {string} birthDateError - The element to display error message for the birth date.
  */
 function validateBirthDate(inputVerification, printError) {
     // Get the current date
@@ -122,27 +123,14 @@ function validateBirthDate(inputVerification, printError) {
     });
 }
 
+// validateBirthDate(birthDateInput, birthDateError);
 
-
-//! FormData Tournaments Section  ------------------------------------------------------//
-//* DOM Selector Elements
-/**
- * @param {HTMLInputElement} tournamentsInput - The input element for the tournaments.
- * @param {HTMLElement} tournamentsError - The element to display error message for the tournaments.
- */
 const tournamentsInput = document.querySelector('input[name="tournaments"]');
 const tournamentsError = document.querySelector(
     ".tournaments[data-error-visible]"
 );
 
-//* Function N°1
-//? Checks if the input value is defined, is a number, and is in the range [0, 99].
-/**
- * @param {number} inputVerification - The value to check.
- * @param {string} printError - The element to display error message.
- * @returns {boolean} True if the value is a valid number within the specified range, otherwise false.
- */
-function validateInput(inputVerification, printError) {
+function validateInputNumber(inputVerification, printError) {
     if (
         !inputVerification.value ||
         isNaN(inputVerification.value) ||
@@ -153,106 +141,61 @@ function validateInput(inputVerification, printError) {
     } else {
         printError.setAttribute("data-error-visible", "false");
     }
-}
-
-//* Function N°1
-//? Event listener to re-validate on every change
-/**
- * @param {string} inputVerification - The input element to verify.
- * @param {string} printError - The element to display error message.
- * @param {function} validateInput - Check this number is valid.
- */
-function validateInputNumber(inputVerification, printError) {
-    validateInput(inputVerification, printError);
     inputVerification.addEventListener("change", () => {
         validateInputNumber(inputVerification, printError);
     });
 }
 
-
-
-//! FormData Radio & CheckBox Section   ------------------------------------------------------//
-//* Function Global for Radio & CheckBox 
-//? Adds "checked=true" attribute to the current element.
-/**
- * @param {HTMLElement} inputElement - NodeListOf (Radio) or HTMLElement (checkbox)
- * @returns {string} Add attribute "checked=true" to selected elements.
- */
-function addCheckedAttribute(inputElement) {
-    inputElement.setAttribute("checked", true);
-}
-
-//TODO: Radio Section   ------------------------------------------------------//
-//* DOM Selector Elements
-/**
- * @param {NodeList} locationInputs - The input elements for the radio buttons.
- * @param {HTMLElement} locationError - The element to display error message for the location.
- */
 const locationInputs = document.querySelectorAll('input[type="radio"]');
 const locationError = document.querySelector(
     ".formData_location[data-error-visible]"
 );
+const cguCheckbox = document.getElementById("checkbox-cgu");
+const cguError = document.querySelector(".form-cgu[data-error-visible]");
 
-//* Function
-//? Validates radio buttons to ensure at least one is selected.
-/**
- * @param {NodeListOf<HTMLElement>} inputVerification - Check radio buttons to validate.
- * @param {HTMLElement} printError - Display: error message.
- */
 function validateCheckbox(inputVerification, printError) {
-    // TODO: Create array element's with Array.from(); the "some" method checks if any element in this array is true
+    // TODO: Création du tableau d'éléments avec Array.from(); la méthode "some" vérifie si l'un des éléments du tableau "input.checked" est vrai
+
     let isChecked = Array.from(inputVerification).some(
         (input) => input.checked
     );
-    // TODO: If "input.checked"=> false, display error message
+    // TODO: Affiche un message d'erreur si "input.checked"  false
     printError.setAttribute("data-error-visible", isChecked ? "false" : "true");
 }
-//? For-off => querySelectorAll[Elements]
+
+function checked(inputVerification, printError) {
+    printError.setAttribute(
+        "data-error-visible",
+        inputVerification.checked ? "false" : "true"
+    );
+}
+
+function addCheckedAttribute(inputElement) {
+    inputElement.setAttribute("checked", true);
+}
+
+cguCheckbox.addEventListener("change", () => {
+    checked(cguCheckbox, cguError);
+    addCheckedAttribute(cguCheckbox);
+});
+
 for (const input of locationInputs) {
-    // TODO: Listen & Update the error based on the state of the radio button
     input.addEventListener("change", () => {
-        // TODO: Deselect all radio buttons
+        // Mettre à jour l'erreur en fonction de l'état du bouton radio
+        // validateCheckbox(input, locationError);
+
+        // Désélectionner tous les boutons radio
         for (const otherInput of locationInputs) {
             otherInput.removeAttribute("checked");
         }
-        // TODO: add checked to the current radio button
+
+        // Sélectionner le bouton radio actuel
         addCheckedAttribute(input);
         validateCheckbox(locationInputs, locationError);
     });
 }
 
-//TODO: FormData Checkbox Section   ------------------------------------------------------//
-//* DOM Selector Elements
-/**
- * @param {HTMLInputElement} cguCheckbox - The checkbox input element for the CGU.
- * @param {HTMLElement} cguError - The element to display error message for the CGU.
- */
-const cguCheckbox = document.getElementById("checkbox-cgu");
-const cguError = document.querySelector(".form-cgu[data-error-visible]");
-
-//* Function
-//? Validates a checkbox to ensure it is checked.
-/**
- * @param {HTMLInputElement} inputVerification - The checkbox input element to validate.
- * @param {HTMLElement} printError - Display: error message.
- */
-function checked(inputVerification, printError) {
-    // TODO: Display an error message if the checkbox is not checked
-    printError.setAttribute(
-        "data-error-visible",
-        inputVerification.checked ? "false" : "true"
-    );
-    // TODO: Listen for changes to the checkbox state and update the error message accordingly
-    cguCheckbox.addEventListener("change", () => {
-        checked(cguCheckbox, cguError);
-        addCheckedAttribute(cguCheckbox);
-    });
-}
-
-
-
-//! FormData Validate() Function   ------------------------------------------------------//
-//* DOM Selector Elements
+//** Validate Function */
 const reserveForm = document.getElementById("reserveForm");
 
 function validate() {
@@ -265,6 +208,7 @@ function validate() {
     validateCheckbox(locationInputs, locationError);
 
     const errors = document.querySelectorAll("[data-error-visible=true]");
+    console.log("errors", errors);
     return errors.length === 0;
 }
 
