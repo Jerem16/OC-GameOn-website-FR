@@ -39,6 +39,8 @@ form .button {
     padding-top: 10px;
 }
 .modal-body {
+    position: relative;
+    min-height: 780px;
     padding: 15px 38.84px;
     margin: 15px auto;
 }
@@ -112,6 +114,15 @@ input[data-error]::after {
 .checkbox-newsletter:checked + .checkbox-cgu_label .checkbox-icon::after,
 .close {
     opacity: 1;
+}
+.close {
+    position: absolute;
+    z-index: 1000;
+    /* top: -20px; */
+    /* right: 100px; */
+    opacity: 1;
+    /* background: #000; */
+    cursor: pointer;
 }
 .formData[data-error-visible="true"] {
     min-height: 110px;
@@ -395,4 +406,35 @@ form .button {
 .same-as-selected,
 .select-items div:hover {
     background-color: rgba(0, 0, 0, 0.1);
+}
+.end {
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    margin: 0 auto;
+    background: #232323;
+    /* background: #000; */
+    top: 20px;
+    left: 0;
+}
+.formEnd {
+    color: #fff;
+    background: #232323;
+    text-align: center;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 142.6%;
+    min-height: 740px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 287px;
+    margin: 0 auto;
+}
+.end-submit {
+    width: 182.551px;
+    height: 40.135px;
+    padding: 0;
 }

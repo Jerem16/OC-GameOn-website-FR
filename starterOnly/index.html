@@ -74,7 +74,7 @@
             <!-- Modal -->
             <div class="modal-bg">
                 <div class="content">
-                    <span class="close"></span>
+                    <span class="close" id="close"></span>
                     <div class="modal-body">
                         <!-- Formulaire de réservation tournoi GameOn  -->
                         <form
@@ -83,6 +83,7 @@
                             action="index.html"
                             method="get"
                             onsubmit="return validate();"
+                            novalidate
                         >
                             <!-- Section Prénom Type String-->
                             <div
@@ -306,6 +307,15 @@
                                 value="C'est parti"
                             />
                         </form>
+                        <div class="end hidden">
+                            <p class="formEnd">Merci pour votre inscription</p>
+                            <input
+                                class="btn-submit button end-submit"
+                                type="submit"
+                                value="Fermer"
+                                onclick="closeModal()"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

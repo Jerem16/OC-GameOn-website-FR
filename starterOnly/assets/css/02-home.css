@@ -29,7 +29,9 @@ p {
     margin-bottom: 0;
     padding: 0.5vw;
 }
-
+.hidden {
+    display: none;
+}
 /*!! Header */
 
 .topNav {

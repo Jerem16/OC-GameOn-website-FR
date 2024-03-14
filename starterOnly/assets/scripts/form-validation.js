@@ -27,8 +27,6 @@ function validateName(inputVerification, printError) {
     });
 }
 
-
-
 //! FormData Email Section  ------------------------------------------------------//
 //* DOM Selector Elements
 /**
@@ -56,8 +54,6 @@ function validateEmail(inputVerification, printError) {
         validateEmail(inputVerification, printError);
     });
 }
-
-
 
 //! FormData Birth Day Section  ------------------------------------------------------//
 //* DOM Selector Elements
@@ -122,8 +118,6 @@ function validateBirthDate(inputVerification, printError) {
     });
 }
 
-
-
 //! FormData Tournaments Section  ------------------------------------------------------//
 //* DOM Selector Elements
 /**
@@ -169,10 +163,8 @@ function validateInputNumber(inputVerification, printError) {
     });
 }
 
-
-
 //! FormData Radio & CheckBox Section   ------------------------------------------------------//
-//* Function Global for Radio & CheckBox 
+//* Function Global for Radio & CheckBox
 //? Adds "checked=true" attribute to the current element.
 /**
  * @param {HTMLElement} inputElement - NodeListOf (Radio) or HTMLElement (checkbox)
@@ -185,10 +177,10 @@ function addCheckedAttribute(inputElement) {
 //TODO: Radio Section   ------------------------------------------------------//
 //* DOM Selector Elements
 /**
- * @param {NodeList} locationInputs - The input elements for the radio buttons.
- * @param {HTMLElement} locationError - The element to display error message for the location.
+ * @param {NodeList} locationInputs - The input elements for [type="radio"] buttons.
+ * @param {HTMLElement} locationError - Display error message on location.
  */
-const locationInputs = document.querySelectorAll('input[type="radio"]');
+const locationInputs = document.querySelectorAll('input[name="location"]');
 const locationError = document.querySelector(
     ".formData_location[data-error-visible]"
 );
@@ -249,11 +241,10 @@ function checked(inputVerification, printError) {
     });
 }
 
-
-
 //! FormData Validate() Function   ------------------------------------------------------//
 //* DOM Selector Elements
 const reserveForm = document.getElementById("reserveForm");
+const endValidationMessage = document.querySelector(".end");
 
 function validate() {
     validateName(firstNameInput, firstNameError);
@@ -269,8 +260,10 @@ function validate() {
 }
 
 reserveForm.addEventListener("submit", function (event) {
-    if (!validate()) {
-        event.preventDefault();
-        console.log("no submit");
+    event.preventDefault();
+    if (validate()) {
+        reserveForm.dataset.readyToSubmit = true;
+        endValidationMessage.classList.remove("hidden");
+        // If the form has been validated and submitted, it will be automatically submitted upon modal closure. See modal.js line 17.
     }
 });
