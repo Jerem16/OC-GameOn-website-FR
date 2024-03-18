@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>Reservation</title>
+        <title>Réservation</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link
@@ -16,13 +16,13 @@
         <link rel="stylesheet" href="./assets/css/01-normalize.css" />
         <link rel="stylesheet" href="./assets/css/02-home.css" />
         <link rel="stylesheet" href="./assets/css/03-modal_form.css" />
-        <link rel="stylesheet" href="./assets/css/04-home-800.css" />
-        <!-- <link rel="stylesheet" href="./assets/css/05-modal_form-800.css" /> -->
+        <link rel="stylesheet" href="./assets/css/04-mobile_home.css" />
+        <link rel="stylesheet" href="./assets/css/05-mobile_modal.css" />
 
-        <!-- <link rel="stylesheet" href="./assets/css/99-calque_home.css" /> -->
-        <!-- <link rel="stylesheet" href="./assets/css/99-calque_form.css" /> -->
-        <script defer src="./assets/scripts/active-link.js"></script>
-        <script defer src="./assets/scripts/menu-mobile.js"></script>
+        <script
+            defer
+            src="./assets/scripts/active_link-menu_mobile.js"
+        ></script>
         <script defer src="./assets/scripts/modal.js"></script>
         <script defer src="./assets/scripts/form-validation.js"></script>
     </head>
@@ -139,7 +139,7 @@
                             <div
                                 class="formData birthDate"
                                 data-error-visible="false"
-                                data-error="Vous devez avoir plus de 12 ans pour vous inscrire"
+                                data-error="Vous devez avoir 13 ans pour vous inscrire"
                             >
                                 <label for="birthDate">Date de naissance</label
                                 ><br />
@@ -158,8 +158,9 @@
                                 data-error="Entrer une valeur numérique, entre 1 et 99"
                             >
                                 <label for="tournaments"
-                                    >À combien de concours GameOn avez-vous déjà
-                                    participé ?</label
+                                    >À combien de tournois
+                                    <span class="hiddenMobile">GameOn</span>
+                                    avez-vous déjà participé ?</label
                                 ><br />
                                 <input
                                     class="text-control"

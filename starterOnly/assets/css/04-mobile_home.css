@@ -136,13 +136,13 @@
         position: fixed;
         z-index: 10;
         animation-duration: 0.4s;
-        width: calc(100vw - 40px);
-        max-width: 354px;
         height: 200px;
         padding: 0 40px;
         background: #fff;
         right: 0;
-        /* left: -100px; */
+    }
+    .main-navbar {
+        width: 100vw;
     }
     .topNav.openMenu .main-navbar {
         animation-name: menuOpen;
@@ -153,15 +153,14 @@
         animation-name: closeOpen;
     }
     .topNav a {
-        padding: 10px 13px 7px 13px;
+        padding: 10px 13px 7px;
         margin: 7px 12.5px 0 0;
     }
-    .topNav a:hover,
     .topNav a.active:hover,
-    .topNav a:focus {
-        /* background-color: transparent; */
-        color: #ffffff;
-        padding: 10px 13px 7px 13px;
+    .topNav a:focus,
+    .topNav a:hover {
+        color: #fff;
+        padding: 10px 13px 7px;
         margin: 7px 12.5px 0 0;
     }
     .hero-section {

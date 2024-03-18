@@ -106,7 +106,7 @@ function validateBirthDate(inputVerification, printError) {
     // Calculate age based on the birth date and current date
     const age = calculateAge(birthDate, currentDate);
 
-    if (!inputVerification.value || age < 12) {
+    if (!inputVerification.value || age < 13) {
         printError.setAttribute("data-error-visible", "true");
     } else {
         printError.setAttribute("data-error-visible", "false");
@@ -174,7 +174,7 @@ function addCheckedAttribute(inputElement) {
     inputElement.setAttribute("checked", true);
 }
 
-//TODO: Radio Section   ------------------------------------------------------//
+//! Radio Section   ------------------------------------------------------//
 //* DOM Selector Elements
 /**
  * @param {NodeList} locationInputs - The input elements for [type="radio"] buttons.
@@ -191,7 +191,7 @@ const locationError = document.querySelector(
  * @param {NodeListOf<HTMLElement>} inputVerification - Check radio buttons to validate.
  * @param {HTMLElement} printError - Display: error message.
  */
-function validateCheckbox(inputVerification, printError) {
+function validateRadio(inputVerification, printError) {
     // Create array element's with Array.from(); the "some" method checks if any element in this array is true
     let isChecked = Array.from(inputVerification).some(
         (input) => input.checked
@@ -209,11 +209,11 @@ for (const input of locationInputs) {
         }
         // Add checked to the current radio button
         addCheckedAttribute(input);
-        validateCheckbox(locationInputs, locationError);
+        validateRadio(locationInputs, locationError);
     });
 }
 
-//TODO: FormData Checkbox Section   ------------------------------------------------------//
+//! FormData Checkbox Section   ------------------------------------------------------//
 //* DOM Selector Elements
 /**
  * @param {HTMLInputElement} cguCheckbox - The checkbox input element for the CGU.
@@ -228,7 +228,7 @@ const cguError = document.querySelector(".form-cgu[data-error-visible]");
  * @param {HTMLInputElement} inputVerification - The checkbox input element to validate.
  * @param {HTMLElement} printError - Display: error message.
  */
-function checked(inputVerification, printError) {
+function validateCheckbox(inputVerification, printError) {
     // Display an error message if the checkbox is unchecked
     printError.setAttribute(
         "data-error-visible",
@@ -236,7 +236,7 @@ function checked(inputVerification, printError) {
     );
     // Listen Event changes to checkbox state, Update error message.
     cguCheckbox.addEventListener("change", () => {
-        checked(cguCheckbox, cguError);
+        validateCheckbox(cguCheckbox, cguError);
         addCheckedAttribute(cguCheckbox);
     });
 }
@@ -250,10 +250,10 @@ function validate() {
     validateName(firstNameInput, firstNameError);
     validateName(lastNameInput, lastNameError);
     validateEmail(emailInput, emailError);
-    validateInputNumber(tournamentsInput, tournamentsError);
     validateBirthDate(birthDateInput, birthDateError);
-    checked(cguCheckbox, cguError);
-    validateCheckbox(locationInputs, locationError);
+    validateInputNumber(tournamentsInput, tournamentsError);
+    validateRadio(locationInputs, locationError);
+    validateCheckbox(cguCheckbox, cguError);
 
     const errors = document.querySelectorAll("[data-error-visible=true]");
     return errors.length === 0;
@@ -264,6 +264,6 @@ reserveForm.addEventListener("submit", function (event) {
     if (validate()) {
         reserveForm.dataset.readyToSubmit = true;
         endValidationMessage.classList.remove("hidden");
-        // If the form has been validated and submitted, it will be automatically submitted upon modal closure. See modal.js line 17.
+        //! If the form has been validated and submitted, it will be automatically submitted upon modal closure. See modal.js line 17.
     }
 });

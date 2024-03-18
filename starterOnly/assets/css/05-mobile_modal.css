@@ -1,0 +1,186 @@
+@media screen and (max-width: 600px) {
+    .content {
+        margin: 87px auto 5%;
+        left: 0;
+        top: -10px;
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        color: #fff;
+        padding-top: 15px;
+    }
+    .modal-body {
+        position: relative;
+        height: auto;
+        width: auto;
+        padding: 18px 30px 0;
+        margin: 0 auto;
+        min-height: unset;
+    }
+    .formData {
+        width: auto;
+        height: 70px;
+        margin-bottom: 15px;
+    }
+    .text-label,
+    label {
+        margin-bottom: 8px;
+    }
+    .text-label {
+        white-space: nowrap;
+        position: relative;
+        top: -4px;
+    }
+    .text-label:nth-child(6) {
+        margin-bottom: 0;
+    }
+    .input-common,
+    .text-control {
+        padding: 8px;
+        border-radius: 8px;
+    }
+    .input-common {
+        outline: 0;
+    }
+    .text-control {
+        margin-top: -1px;
+        height: 49px;
+        min-height: unset;
+    }
+    .hiddenMobile {
+        display: none;
+    }
+    .checkbox-label .checkbox-icon {
+        width: 19px;
+        height: 19px;
+        left: 0;
+        top: 0;
+    }
+    .checkbox-label .checkbox-icon::after {
+        padding: 5px;
+    }
+    .checkbox-label {
+        top: 0;
+        margin: 0 10px 0 0;
+        padding: 0 0 0 25px;
+        height: 20px;
+        max-height: unset;
+    }
+    input[type="radio"][value="New York"] + label,
+    input[type="radio"][value="San Francisco"] + label,
+    input[type="radio"][value="Boston"] + label,
+    input[type="radio"][value="Chicago"] + label,
+    input[type="radio"][value="Portland"] + label,
+    input[type="radio"][value="Seattle"] + label {
+        margin-right: 10px;
+        margin-top: 7px;
+    }
+    .formData_location {
+        top: -7.5px;
+        height: 30px;
+        margin-bottom: 5px;
+    }
+    .formData_cgu {
+        display: flex;
+        flex-flow: column wrap;
+        max-width: 450px;
+        padding: 0;
+        height: 60px;
+        margin-top: 10px;
+        position: relative;
+    }
+    .formData_cgu div {
+        margin-top: 5px;
+    }
+    .formData_cgu .form-newsletter {
+        margin-top: -5px;
+    }
+    .checkbox-cgu,
+    .checkbox-newsletter {
+        width: 25px;
+        height: 25px;
+        border-radius: 4px;
+        border: 0;
+        background: #c4c4c4;
+        position: absolute;
+    }
+    .checkbox-cgu_label {
+        margin-left: 27.5px;
+    }
+    .checkbox-cgu_label .checkbox-icon {
+        display: block;
+        position: absolute;
+        left: -27.5px;
+        top: -5px;
+        border-radius: 4px;
+        border: 0;
+        background: #c4c4c4;
+    }
+    input[type="submit"] {
+        margin-bottom: 27.5px;
+        max-height: 35px;
+        width: 140px;
+    }
+    .formData[data-error-visible="true"] {
+        min-height: 85px;
+    }
+    .formData_location[data-error-visible="true"] {
+        min-height: 65px;
+    }
+    .location[data-error-visible="true"]::after {
+        content: attr(data-error);
+        font-size: 0.4em;
+        color: #e54858;
+        display: block;
+        position: absolute;
+        top: 55px;
+        left: 0;
+        text-align: left;
+        opacity: 1;
+        transition: 0.3s;
+        width: 100%;
+        height: 10px;
+    }
+    .form-cgu[data-error-visible="true"]::after {
+        top: -15px;
+        left: 0;
+        width: 100%;
+    }
+    .end {
+        top: 27px;
+        min-height: 650px;
+    }
+    .formEnd {
+        min-height: 503px;
+        max-width: 277px;
+    }
+    .end .end-submit {
+        margin: 65px auto 27.5px;
+        width: 141px;
+        height: 31px;
+        border-radius: 8px;
+        padding: 0;
+    }
+}
+@media screen and (max-width: 413px) {
+    .text-label {
+        white-space: unset;
+    }
+    .tournaments {
+        height: auto;
+        max-height: 110px;
+    }
+}
+@media screen and (max-width: 380px) {
+    .formData_location {
+        height: auto;
+    }
+}
+@media screen and (max-width: 340px) {
+    .location[data-error-visible="true"]::after {
+        top: 75px;
+    }
+    .form-cgu[data-error-visible="true"]::after {
+        top: -10px;
+    }
+}
