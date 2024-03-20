@@ -5,25 +5,30 @@
  * @param {HTMLElement} firstNameError - The element to display error message for the first name.
  * @param {HTMLInputElement} lastNameInput - The input element for the last name.
  * @param {HTMLElement} lastNameError - The element to display error message for the last name.
+ * @param {Number}  regexNumber;
  */
 const firstNameInput = document.getElementById("firstName");
 const firstNameError = document.querySelector(".firstName[data-error-visible]");
 const lastNameInput = document.getElementById("lastName");
 const lastNameError = document.querySelector(".lastName[data-error-visible]");
-
+const regexNumber = /[0-9]/;
 /**
  * ? To Validates first or last Name input must be contain minimum 2 characters
  * @param {string} inputVerification - The input element to verify.
  * @param {string} printError - The element to display error message.
+ * @param {RegExp} regexNumber - The regular expression to detect numbers.
  */
-function validateName(inputVerification, printError) {
-    if (inputVerification.value.length < 2) {
+function validateName(inputVerification, printError, regexNumber) {
+    if (
+        inputVerification.value.length < 2 ||
+        regexNumber.test(inputVerification.value)
+    ) {
         printError.setAttribute("data-error-visible", "true");
     } else {
         printError.setAttribute("data-error-visible", "false");
     }
     inputVerification.addEventListener("change", () => {
-        validateName(inputVerification, printError);
+        validateName(inputVerification, printError, regexNumber);
     });
 }
 
@@ -247,8 +252,8 @@ const reserveForm = document.getElementById("reserveForm");
 const endValidationMessage = document.querySelector(".end");
 
 function validate() {
-    validateName(firstNameInput, firstNameError);
-    validateName(lastNameInput, lastNameError);
+    validateName(firstNameInput, firstNameError, regexNumber);
+    validateName(firstNameInput, firstNameError, regexNumber);
     validateEmail(emailInput, emailError);
     validateBirthDate(birthDateInput, birthDateError);
     validateInputNumber(tournamentsInput, tournamentsError);
